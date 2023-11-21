@@ -881,6 +881,12 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
             return
         }
 
+        // We only want to use Health Connect
+        if (!useHealthConnectIfAvailable) {
+            result.success(null)
+            return
+        }
+
         if (context == null) {
             result.success(null)
             return
@@ -1203,6 +1209,14 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
             hasPermissionsHC(call, result)
             return
         }
+
+        // We only want to use Health Connect
+        if (!useHealthConnectIfAvailable) {
+            result.success(false)
+            return
+        }
+
+
         if (context == null) {
             result.success(false)
             return
@@ -1233,6 +1247,13 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
             requestAuthorizationHC(call, result)
             return
         }
+
+        // We only want to use Health Connect
+        if (!useHealthConnectIfAvailable) {
+            result.success(false)
+            return
+        }
+
 
         val optionsToRegister = callToHealthTypes(call)
 
@@ -1286,6 +1307,12 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
 
         if (useHealthConnectIfAvailable && healthConnectAvailable) {
             getStepsHealthConnect(start, end, result)
+            return
+        }
+
+        // We only want to use Health Connect
+        if (!useHealthConnectIfAvailable) {
+            result.success(null)
             return
         }
 
