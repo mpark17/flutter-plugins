@@ -1392,6 +1392,7 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "useHealthConnectIfAvailable" -> useHealthConnectIfAvailable(call, result)
+            "isHealthConnectAvailable" -> isHealthConnectAvailable(call, result)
             "hasPermissions" -> hasPermissions(call, result)
             "requestAuthorization" -> requestAuthorization(call, result)
             "revokePermissions" -> revokePermissions(call, result)
@@ -1443,6 +1444,10 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
     fun useHealthConnectIfAvailable(call: MethodCall, result: Result) {
         useHealthConnectIfAvailable = true
         result.success(null)
+    }
+
+    fun isHealthConnectAvailable(call: MethodCall, result: Result) {
+        result.success(healthConnectAvailable)
     }
 
     private fun hasPermissionsHC(call: MethodCall, result: Result) {

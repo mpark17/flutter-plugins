@@ -34,6 +34,10 @@ class HealthFactory {
           ? _dataTypeKeysAndroid.contains(dataType)
           : _dataTypeKeysIOS.contains(dataType);
 
+  Future<bool?> isHealthConnectAvailable() async {
+    return await _channel.invokeMethod('isHealthConnectAvailable');
+  }
+
   /// Determines if the data types have been granted with the specified access rights.
   ///
   /// Returns:
