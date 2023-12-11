@@ -897,10 +897,10 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
         }
 
         // We only want to use Health Connect
-        if (!useHealthConnectIfAvailable) {
+        /*if (!useHealthConnectIfAvailable) {
             result.success(null)
             return
-        }
+        }*/
 
         if (context == null) {
             result.success(null)
@@ -1226,10 +1226,10 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
         }
 
         // We only want to use Health Connect
-        if (!useHealthConnectIfAvailable) {
+        /*if (!useHealthConnectIfAvailable) {
             result.success(false)
             return
-        }
+        }*/
 
 
         if (context == null) {
@@ -1264,10 +1264,10 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
         }
 
         // We only want to use Health Connect
-        if (!useHealthConnectIfAvailable) {
+        /*if (!useHealthConnectIfAvailable) {
             result.success(false)
             return
-        }
+        }*/
 
 
         val optionsToRegister = callToHealthTypes(call)
@@ -1326,10 +1326,10 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
         }
 
         // We only want to use Health Connect
-        if (!useHealthConnectIfAvailable) {
+        /*if (!useHealthConnectIfAvailable) {
             result.success(null)
             return
-        }
+        }*/
 
         val context = context ?: return
 
