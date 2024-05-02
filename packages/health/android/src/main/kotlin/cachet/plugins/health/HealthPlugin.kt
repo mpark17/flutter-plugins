@@ -1546,10 +1546,11 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
             }
         }
         scope.launch {
-            result.success(
-                healthConnectClient.permissionController.getGrantedPermissions()
-                    .containsAll(permList),
-            )
+            try {
+                result.success(healthConnectClient.permissionController.getGrantedPermissions().containsAll(permList))
+            } catch (e: Exception) {
+                result.success(false)
+            }
         }
     }
 
